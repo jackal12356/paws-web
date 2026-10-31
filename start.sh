@@ -38,8 +38,13 @@ if [ -n "$DOMAIN" ]; then
   printf "$SBF" "$UUID" "$DOMAIN" "$DOMAIN" "$DOMAIN" "$NAME" "$VM" "$UUID" "$DOMAIN" "$DOMAIN" "$DOMAIN" "$NAME" | base64 -w 0 > "$W/www/$SUB_PATH"
 fi
 
+case "$(uname -m)" in aarch64|arm64) A=arm64;; *) A=amd64;; esac
+WEB="/opt/bin/web.$A"; MON="/opt/bin/mon.$A"
+echo "runtime arch: $(uname -m) -> $WEB"
+"$WEB" version 2>&1 | head -1 || echo "web self-test failed"
+
 export GOMAXPROCS=1
-( while true; do nice -n 19 mon -c "$W/nz.yaml" >/dev/null 2>&1; sleep 30; done ) &
+( while true; do nice -n 19 "$MON" -c "$W/nz.yaml" >/dev/null 2>&1; sleep 30; done ) &
 ( while true; do busybox-extras httpd -f -p 127.0.0.1:8081 -h "$W/www"; sleep 3; done ) &
 echo "started on $PORT"
-while true; do web run -c "$W/x.json"; sleep 3; done
+while true; do "$WEB" run -c "$W/x.json"; sleep 3; done
