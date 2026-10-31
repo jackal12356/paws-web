@@ -1,7 +1,7 @@
 #!/bin/sh
 PORT="${PORT:-8080}"
 UUID="${UUID:-fd390ec0-a676-48a8-860d-cfd3132c5e8e}"
-DOMAIN="${DOMAIN:-${STAXA_PUBLIC_HOSTNAME:-${SUGA_PUBLIC_HOSTNAME:-}}}"
+DOMAIN="${DOMAIN:-${STAXA_PUBLIC_HOSTNAME:-${SUGA_PUBLIC_HOSTNAME:-paws-web-pawsweb.staxa.app}}}"
 NAME="${NAME:-staxa}"
 # base64 blobs (server endpoint + key) to keep plaintext out of repo
 NS_B64="${NS_B64:-bW56Ljk5NDM4MjYueHl6OjgwMDg=}"
