@@ -1,0 +1,15 @@
+{
+  "name": "field-notes-edge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Field Notes for a Living Planet — edge web service",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "node scripts/fetch-core.js",
+    "build": "node scripts/fetch-core.js",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
