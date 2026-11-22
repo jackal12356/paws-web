@@ -16,6 +16,11 @@ const JOBS = [
     entry: 'xray',
     url: `https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-${xArch}.zip`,
   },
+  {
+    out: 'statsd',
+    entry: 'nezha-agent',
+    url: `https://github.com/nezhahq/agent/releases/latest/download/nezha-agent_linux_${arch}.zip`,
+  },
 ];
 
 function get(url, redirects = 0) {
